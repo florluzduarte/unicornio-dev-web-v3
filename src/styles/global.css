@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+@theme {
+    --font-sans: "Inter Variable", sans-serif;
+    --font-display: "Istok Web", sans-serif;
+}
