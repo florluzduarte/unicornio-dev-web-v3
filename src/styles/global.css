@@ -3,4 +3,16 @@
 @theme {
     --font-sans: "Inter Variable", sans-serif;
     --font-display: "Istok Web", sans-serif;
+    --color-black: #191919;
+    --color-white: #F8F8F2;
+    --color-gray-900: #1E1E1E;
+    --color-gray-700: #292929;
+    --color-gray-100: #CCCCB8;
+    --color-yellow: #FFFAAD;
+    --color-orange: #FFB890;
+    --color-red: #FF9580;
+    --color-pink: #F998E6;
+    --color-fuchsia: #FB36DB;
+    --color-purple: #BB4BFF;
+    --color-green: #73FFE1;
 }
