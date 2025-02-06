@@ -6,25 +6,25 @@ interface Props {
   subpath: string;
 }
 
-const pathname = new URL(Astro.request.url);
+const pathname = new URL(Astro.request.url).pathname;
 const { subpath, lang } = Astro.props;
-const currentLang = Astro.currentLocale;
 const currentUrl = "font-bold text-green hover:text-white";
 const notCurrentUrl = "font-normal";
 ---
 
 <li class="font-mono text-gray-100 md:px-3 lg:px-6 hover:text-white">
-  <a href={lang === "en" ? `/${pathname.pathname}` : `/${lang}/${subpath}`}>
-    <div class="flex gap-3">
-      <slot />
-    </div>
-  </a>
-</li>
-
-<!-- class={lang === "en"
+  <a
+    href={lang === "en" ? `/${subpath}` : `/${lang}/${subpath}`}
+    class={lang === "en"
       ? pathname === `/${subpath}`
         ? currentUrl
         : notCurrentUrl
       : pathname === `/${lang}/${subpath}`
         ? currentUrl
-        : notCurrentUrl} -->
+        : notCurrentUrl}
+  >
+    <div class="flex gap-3">
+      <slot />
+    </div>
+  </a>
+</li>

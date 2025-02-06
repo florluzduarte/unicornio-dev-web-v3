@@ -7,6 +7,8 @@ export type Lang = "es" | "en";
 
 export const defaultLang = "en";
 
+export const showDefaultLang = false;
+
 export type TranslationKey = keyof (typeof dictionary)[typeof defaultLang];
 
 export const dictionary = {
