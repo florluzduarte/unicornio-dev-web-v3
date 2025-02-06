@@ -1,0 +1,17 @@
+---
+import Layout from "@layouts/Layout.astro";
+import SmallBio from "@components/home/SmallBio.astro";
+// import LatestPosts from "@components/home/LatestPosts.astro";
+import Line from "@components/ui/line/Line.astro";
+import { getRelativeLocaleUrl } from "astro:i18n";
+
+const aboutUrl = getRelativeLocaleUrl("es", "about");
+---
+
+<Layout>
+  <div class="flex flex-col gap-14 mb-8">
+    <SmallBio aboutUrl={aboutUrl} />
+    <Line />
+    <!-- <LatestPosts /> -->
+  </div>
+</Layout>

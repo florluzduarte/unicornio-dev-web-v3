@@ -1,0 +1,21 @@
+---
+import type { ISectionParagraph } from "@type/ui-types";
+import type { Lang } from "@translate/dictionary";
+import Paragraph from "./Paragraph.astro";
+
+interface Props {
+  spanishTexts: ISectionParagraph[];
+  englishTexts: ISectionParagraph[];
+}
+
+const { spanishTexts, englishTexts } = Astro.props;
+const lang = Astro.currentLocale as Lang;
+---
+
+<div class="flex flex-col gap-8 mb-8">
+  {
+    lang == "es"
+      ? spanishTexts.map((paragraph) => <Paragraph text={paragraph.text} />)
+      : englishTexts.map((paragraph) => <Paragraph text={paragraph.text} />)
+  }
+</div>

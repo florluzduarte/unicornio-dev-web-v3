@@ -1,0 +1,29 @@
+---
+import { Image } from "astro:assets";
+import type { Lang } from "@i18n/dictionary";
+import { useTranslations } from "@i18n/utils/i18n-utils";
+import Paragraph from "@components/ui/text-components/Paragraph.astro";
+import florImg from "@assets/about/flor-profile-img.png";
+import Heading1 from "@components/ui/text-components/Heading1.astro";
+import InternalLink from "@components/ui/links/InternalLink.astro";
+
+const lang = Astro.currentLocale as Lang;
+const t = useTranslations(lang);
+
+interface props {
+  aboutUrl: string;
+}
+
+const { aboutUrl } = Astro.props;
+---
+
+<section class="flex flex-col md:flex-row gap-8 lg:gap-14 md:items-center">
+  <Image src={florImg} alt="Flor Luz Duarte" />
+  <div class="flex flex-col gap-4">
+    <span class="lg:max-w-[450px]">
+      <Heading1 color="text-white">{t("home.title")}</Heading1>
+    </span>
+    <Paragraph text={t("home.small.bio")} />
+    <InternalLink path={aboutUrl}>{t("home.about.link")}</InternalLink>
+  </div>
+</section>

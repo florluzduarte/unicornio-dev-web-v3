@@ -1,0 +1,19 @@
+---
+import type { Lang } from "@translate/dictionary";
+import { useTranslations } from "@translate/utils/i18n-utils";
+
+interface Props {
+  tag: string;
+  lang: Lang;
+}
+
+const { tag, lang } = Astro.props;
+const t = useTranslations(lang as Lang);
+---
+
+<li class="bg-gray-700 py-2 px-4 rounded-full">
+  <a
+    href={`/${lang}/tags/${tag}`}
+    class="font-sans font-bold text-gray-100 hover:text-white">{tag}</a
+  >
+</li>

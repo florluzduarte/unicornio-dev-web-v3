@@ -1,0 +1,17 @@
+---
+import Paragraph from "@components/ui/text-components/Paragraph.astro";
+import {
+  spanishCommunitiesDescription,
+  englishCommunitiesDescription,
+} from "@data/communitiesData";
+
+const lang = Astro.currentLocale;
+---
+
+<section class="flex flex-col gap-4">
+  {
+    lang === "es"
+      ? spanishCommunitiesDescription.map((item) => <Paragraph text={item} />)
+      : englishCommunitiesDescription.map((item) => <Paragraph text={item} />)
+  }
+</section>

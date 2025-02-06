@@ -1,0 +1,17 @@
+---
+import type { FontType } from "@type/ui-types";
+
+interface Props {
+  text: string;
+  fontType?: FontType;
+  color?: string;
+}
+
+const { text, fontType = "regular", color = "text-gray-100" } = Astro.props;
+---
+
+<p
+  class={`font-mono text-sm ${color} ${fontType === "bold" ? "font-bold" : "font-normal"}`}
+>
+  {text}
+</p>

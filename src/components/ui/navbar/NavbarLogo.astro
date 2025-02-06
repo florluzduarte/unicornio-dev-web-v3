@@ -1,0 +1,17 @@
+---
+import type { Lang } from "@i18n/dictionary";
+import { useTranslations } from "@i18n/utils/i18n-utils";
+
+const lang = Astro.currentLocale as Lang;
+const t = useTranslations(lang);
+---
+
+<a
+  href={`/${lang}/`}
+  class="flex flex-col items-center py-6 border-b-[0.5px] border-gray-100 md:items-start md:w-full md:ms-6 lg:ms-10 md:border-b-0"
+  aria-label={t("nav.aria.linklogo")}
+>
+  <span class="text-pink font-bold font-mono text-lg">Florencia Luz Duarte</span
+  >
+  <span class="text-white font-mono">@unicornio.dev</span>
+</a>

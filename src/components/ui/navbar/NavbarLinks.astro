@@ -1,0 +1,21 @@
+---
+import { useTranslations } from "@i18n/utils/i18n-utils";
+import type { Lang } from "@i18n/dictionary";
+import NavbarItem from "./NavbarItem.astro";
+import { navbarLinksData } from "./navbarLinksData";
+
+const lang = Astro.currentLocale as Lang;
+const t = useTranslations(lang);
+---
+
+<ul
+  class="flex justify-between py-3 px-3 border-b-[0.5px] border-gray-100 md:py-2 md:border-b-0 md:border-r-[0.5px]"
+>
+  {
+    navbarLinksData.map((item) => (
+      <NavbarItem lang={lang} subpath={item.subpath}>
+        {t(item.translationKey)}
+      </NavbarItem>
+    ))
+  }
+</ul>

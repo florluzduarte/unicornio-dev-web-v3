@@ -1,0 +1,30 @@
+---
+import type { Lang } from "@i18n/dictionary";
+
+interface Props {
+  lang: Lang;
+  subpath: string;
+}
+
+const pathname = new URL(Astro.request.url);
+const { subpath, lang } = Astro.props;
+const currentLang = Astro.currentLocale;
+const currentUrl = "font-bold text-green hover:text-white";
+const notCurrentUrl = "font-normal";
+---
+
+<li class="font-mono text-gray-100 md:px-3 lg:px-6 hover:text-white">
+  <a href={lang === "en" ? `/${pathname.pathname}` : `/${lang}/${subpath}`}>
+    <div class="flex gap-3">
+      <slot />
+    </div>
+  </a>
+</li>
+
+<!-- class={lang === "en"
+      ? pathname === `/${subpath}`
+        ? currentUrl
+        : notCurrentUrl
+      : pathname === `/${lang}/${subpath}`
+        ? currentUrl
+        : notCurrentUrl} -->

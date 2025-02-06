@@ -1,0 +1,35 @@
+---
+import type { Lang } from "@translate/dictionary";
+import { useTranslations } from "@translate/utils/i18n-utils";
+import { footerLinksData, footerExternalLinks } from "./footerLinksData";
+import NavbarItem from "../navbar/NavbarItem.astro";
+
+const lang = Astro.currentLocale as Lang;
+const t = useTranslations(lang);
+---
+
+<nav aria-labelledby="secondary-menu" class="my-4">
+  <h2 id="secondary-menu" class="sr-only">{t("footer.nav.aria")}</h2>
+  <ul
+    class="grid grid-cols-2 py-3 px-3 gap-4 md:grid-cols-3 lg:grid-cols-5 lg:gap-6"
+  >
+    {
+      footerLinksData.map((item) => (
+        <NavbarItem lang={lang} subpath={item.subpath}>
+          {t(item.translationKey)}
+        </NavbarItem>
+      ))
+    }
+    <li class="font-mono text-gray-100 md:px-3 lg:px-6 hover:text-white">
+      <a href="https://florluzduarte.unicornio.dev" target="_blank">
+        {t(footerExternalLinks[0].translationKey)}
+      </a>
+    </li>
+
+    <li class="font-mono text-gray-100 md:px-3 lg:px-6 hover:text-white">
+      <a href="https://links.unicornio.dev" target="_blank">
+        {t(footerExternalLinks[1].translationKey)}
+      </a>
+    </li>
+  </ul>
+</nav>

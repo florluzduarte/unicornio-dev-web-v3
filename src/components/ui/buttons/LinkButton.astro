@@ -1,0 +1,31 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  title?: string;
+  iconName?: string;
+  iconSize?: number;
+  iconPosition?: "left" | "right";
+  path: string;
+}
+
+const { title, iconName, iconSize, iconPosition, path } = Astro.props;
+---
+
+<a
+  href={path}
+  class="flex gap-2 p-2 border-[0.5px] border-gray-100 bg-gray-700 rounded-lg hover:bg-gray-900 justify-center items-center h-full"
+  target="_blank"
+>
+  {
+    iconPosition === "left" && (
+      <Icon name={iconName} size={iconSize} title={title} aria-label={title} />
+    )
+  }
+  {title && <span class="font-bold">{title}</span>}
+  {
+    iconPosition === "right" && (
+      <Icon name={iconName} size={iconSize} title={title} aria-label={title} />
+    )
+  }
+</a>

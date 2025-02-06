@@ -1,0 +1,18 @@
+---
+import { languages, type Lang } from "@i18n/dictionary";
+import NavbarItem from "../navbar/NavbarItem.astro";
+// import { Icon } from "astro-icon/components";
+
+const currentPath = Astro.url.pathname;
+---
+
+<ul class="flex justify-around py-3 px-3 md:border-b-0 md:border-gray-100">
+  {
+    Object.entries(languages).map(([lang, label]) => (
+      <NavbarItem lang={lang as Lang} subpath={currentPath}>
+        {label}
+        {/* <Icon name={`${lang}-flag`} size={24} /> */}
+      </NavbarItem>
+    ))
+  }
+</ul>

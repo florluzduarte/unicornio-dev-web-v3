@@ -1,11 +1,17 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from "@layouts/Layout.astro";
+import SmallBio from "@components/home/SmallBio.astro";
+// import LatestPosts from "@components/home/LatestPosts.astro";
+import Line from "@components/ui/line/Line.astro";
+import { getRelativeLocaleUrl } from "astro:i18n";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const aboutUrl = getRelativeLocaleUrl("en", "about");
 ---
 
 <Layout>
-	<Welcome />
+  <div class="flex flex-col gap-14 mb-8">
+    <SmallBio aboutUrl={aboutUrl} />
+    <Line />
+    <!-- <LatestPosts /> -->
+  </div>
 </Layout>

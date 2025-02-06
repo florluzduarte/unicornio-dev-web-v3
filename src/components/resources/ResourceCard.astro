@@ -1,0 +1,24 @@
+---
+import type { IResource } from "@type/ui-types";
+import { textColors, hoverBorderColors } from "@data/styles/colors";
+import Heading2 from "@components/ui/text-components/Heading2.astro";
+import Paragraph from "@components/ui/text-components/Paragraph.astro";
+
+interface Props {
+  resource: IResource;
+}
+
+const { resource } = Astro.props;
+const { path, title, order, description } = resource;
+---
+
+<li>
+  <a
+    href={path}
+    class=`block h-full rounded-lg border border-gray-700 p-4 ${hoverBorderColors[order - 1]}`
+    target="_blank"
+  >
+    <Heading2 color={textColors[order - 1]}>{title}</Heading2>
+    <Paragraph text={description} />
+  </a>
+</li>

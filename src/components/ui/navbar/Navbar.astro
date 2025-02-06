@@ -1,0 +1,21 @@
+---
+import { useTranslations } from "@i18n/utils/i18n-utils";
+import type { Lang } from "@i18n/dictionary";
+
+import NavbarLogo from "./NavbarLogo.astro";
+import NavbarLinks from "./NavbarLinks.astro";
+import LanguagePicker from "../language-picker/LanguagePicker.astro";
+
+const lang = Astro.currentLocale as Lang;
+const t = useTranslations(lang);
+---
+
+<nav
+  class="px-6 flex flex-col md:flex-row md:justify-between md:items-center xl:max-w-6xl xl:mx-auto"
+  aria-labelledby="main-menu"
+>
+  <h2 id="main-menu" class="sr-only">{t("nav.aria")}</h2>
+  <NavbarLogo />
+  <NavbarLinks />
+  <LanguagePicker />
+</nav>

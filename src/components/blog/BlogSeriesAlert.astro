@@ -1,0 +1,26 @@
+---
+import InternalLink from "@components/ui/links/InternalLink.astro";
+import Paragraph from "@components/ui/text-components/Paragraph.astro";
+import type { Lang } from "@translate/dictionary";
+import { useTranslations } from "@translate/utils/i18n-utils";
+
+interface Props {
+  title: string;
+  description: string;
+  link: string;
+}
+
+const { title, description, link } = Astro.props;
+const lang = Astro.currentLocale as Lang;
+const t = useTranslations(lang);
+---
+
+<div
+  class="rounded border-s-4 border-orange bg-gray-700 p-4 flex flex-col gap-4"
+>
+  <strong class="block font-bold font-sans text-white">{title}</strong>
+  <Paragraph text={description} />
+  <InternalLink color="text-white" path={link}
+    >{t("blog.series.alert.link")}</InternalLink
+  >
+</div>

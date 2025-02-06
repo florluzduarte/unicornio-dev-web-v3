@@ -1,0 +1,30 @@
+---
+import type { Lang } from "@translate/dictionary";
+import { useTranslations } from "@translate/utils/i18n-utils";
+import { socialMediaLinks } from "@data/socialMediaLinks";
+import LinkButton from "../buttons/LinkButton.astro";
+
+const lang = Astro.currentLocale as Lang;
+const t = useTranslations(lang);
+---
+
+<nav aria-labelledby="social-media-menu" class="my-6">
+  <h2 id="social-media-menu" class="sr-only">{t("footer.socialmedia.aria")}</h2>
+
+  <ul
+    class="grid grid-cols-4 gap-4 place-items-stretch md:grid-cols-8 md:max-w-[500px] md:mx-auto"
+  >
+    {
+      socialMediaLinks.map((link) => (
+        <li>
+          <LinkButton
+            path={link.url}
+            iconName={link.icon}
+            iconSize={link.size}
+            iconPosition="left"
+          />
+        </li>
+      ))
+    }
+  </ul>
+</nav>

@@ -1,0 +1,30 @@
+---
+import { Image } from "astro:assets";
+import Line from "../line/Line.astro";
+import Paragraph from "../text-components/Paragraph.astro";
+import SecondaryNavbar from "./SecondaryNavbar.astro";
+import SocialMediaNavbar from "./SocialMediaNavbar.astro";
+import CCLicense from "./CCLicense.astro";
+import unicornioPixelArt from "@assets/general/unicornio.png";
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="mx-6 xl:max-w-6xl xl:mx-auto">
+  <Image
+    src={unicornioPixelArt}
+    alt="Unicornio Dev Pixel Art"
+    class="mx-auto"
+  />
+  <Line />
+  <div class="flex flex-col items-center my-4">
+    <Paragraph text={`© 2023 - ${currentYear}`} />
+    <Paragraph text="Florencia Luz Duarte | unicornio.dev" />
+  </div>
+  <Line />
+  <SecondaryNavbar />
+  <Line />
+  <SocialMediaNavbar />
+  <Line />
+  <CCLicense />
+</footer>

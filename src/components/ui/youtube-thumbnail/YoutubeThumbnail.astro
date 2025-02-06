@@ -1,0 +1,22 @@
+---
+import type { Lang } from "@translate/dictionary";
+import { useTranslations } from "@translate/utils/i18n-utils";
+import type { ShareLink } from "@type/ui-types";
+import { Image } from "astro:assets";
+
+interface Props {
+  videoId: ShareLink;
+}
+
+const { videoId } = Astro.props;
+const youtubeBaseUrl = `https://img.youtube.com/vi/${videoId}/sddefault.jpg`;
+const lang = Astro.currentLocale as Lang;
+const t = useTranslations(lang);
+---
+
+<Image
+  alt={t("thumbnail.aria")}
+  src={youtubeBaseUrl}
+  width="1920"
+  height="1080"
+/>

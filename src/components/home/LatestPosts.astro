@@ -1,0 +1,76 @@
+---
+import { getCollection } from "astro:content";
+import type { Lang } from "@translate/dictionary";
+import type {
+  BlogPostData,
+  BlogPosts,
+} from "@type/content-collections/blog-collection-types";
+import { useTranslations } from "@translate/utils/i18n-utils";
+import BlogArticle from "@components/blog/BlogArticle.astro";
+import Heading2 from "@components/ui/text-components/Heading2.astro";
+
+const allPostsSpanish: BlogPosts[] = await getCollection(
+  "blog",
+  ({ data }: { data: BlogPostData }) => {
+    return data.language === "es";
+  },
+);
+
+const spanishPostsSortedByDate = allPostsSpanish.sort(
+  (postA, postB) =>
+    Date.parse(postB.data.publishDate) - Date.parse(postA.data.publishDate),
+);
+
+const allPostsEnglish: BlogPosts[] = await getCollection(
+  "blog",
+  ({ data }: { data: BlogPostData; slug: string }) => {
+    return data.language === "en";
+  },
+);
+
+const englishPostsSortedByDate = allPostsEnglish.sort(
+  (postA, postB) =>
+    Date.parse(postB.data.publishDate) - Date.parse(postA.data.publishDate),
+);
+
+const lang = Astro.currentLocale as Lang;
+const t = useTranslations(lang);
+---
+
+<section>
+  <Heading2 color="text-white">{t("home.latest.articles")}</Heading2>
+
+  {
+    lang === "es"
+      ? spanishPostsSortedByDate
+          .slice(0, 3)
+          .map(
+            (
+              { data, slug }: { data: BlogPostData; slug: string },
+              index: number,
+            ) => (
+              <BlogArticle
+                data={data}
+                slug={slug}
+                index={index}
+                lang={lang as Lang}
+              />
+            ),
+          )
+      : englishPostsSortedByDate
+          .slice(0, 3)
+          .map(
+            (
+              { data, slug }: { data: BlogPostData; slug: string },
+              index: number,
+            ) => (
+              <BlogArticle
+                data={data}
+                slug={slug}
+                index={index}
+                lang={lang as Lang}
+              />
+            ),
+          )
+  }
+</section>

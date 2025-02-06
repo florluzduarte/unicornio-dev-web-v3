@@ -1,0 +1,20 @@
+---
+import { Image } from "astro:assets";
+import noTranlationIllustration from "@assets/blog/shared/no-translation-illustration.png";
+import Heading1 from "@components/ui/text-components/Heading1.astro";
+---
+
+<div class="px-4 my-14">
+    <div class="text-center flex flex-col items-center gap-6">
+        <!-- Illustration -->
+        <Image src={noTranlationIllustration} alt=""/>
+
+        <Heading1>Uh-oh!</Heading1>
+
+        <p class="text-gray-100">
+            Sorry, this article is only available in Spanish at this moment. 
+            I'm working to make sure all content in the blog gets translated, 
+            but it might take a while.
+        </p>
+    </div>
+</div>

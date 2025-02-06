@@ -1,0 +1,36 @@
+---
+import type { Lang } from "@translate/dictionary";
+import type { ITechTalks } from "@type/ui-types";
+import { useTranslations } from "@translate/utils/i18n-utils";
+import Heading2 from "@components/ui/text-components/Heading2.astro";
+import YoutubeThumbnail from "@components/ui/youtube-thumbnail/YoutubeThumbnail.astro";
+import Paragraph from "@components/ui/text-components/Paragraph.astro";
+import SimpleLink from "@components/ui/links/SimpleLink.astro";
+import Line from "@components/ui/line/Line.astro";
+
+interface Props {
+  talk: ITechTalks;
+}
+
+const { talk } = Astro.props;
+const lang = Astro.currentLocale as Lang;
+const t = useTranslations(lang);
+---
+
+<div class="flex flex-col gap-4">
+  <Heading2 color="text-orange">{talk.title}</Heading2>
+  <Paragraph text={talk.description} />
+  <Paragraph text={`${t("talks.language")}: ${talk.language}`} />
+  {
+    talk.slidesLink && (
+      <span class="flex gap-2 items-center">
+        <Paragraph text="Slides: " />
+        <SimpleLink path={talk.slidesLink}>{t("talks.slides.link")}</SimpleLink>
+      </span>
+    )
+  }
+  <a href={talk.videoLink} target="_blank" class="mb-14">
+    <YoutubeThumbnail videoId={talk.videoId} />
+  </a>
+  <Line />
+</div>

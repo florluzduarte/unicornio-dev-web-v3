@@ -1,0 +1,15 @@
+---
+import type { Lang } from "@translate/dictionary";
+import { spanishResources, englishResources } from "@data/resourcesData";
+import ResourceCard from "./ResourceCard.astro";
+
+const lang = Astro.currentLocale as Lang;
+---
+
+<ul class="flex flex-col gap-8 my-8">
+  {
+    lang == "es"
+      ? spanishResources.map((resource) => <ResourceCard resource={resource} />)
+      : englishResources.map((resource) => <ResourceCard resource={resource} />)
+  }
+</ul>

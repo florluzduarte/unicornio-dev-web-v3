@@ -1,20 +1,79 @@
 ---
+import { ClientRouter } from "astro:transitions";
+
 import "../styles/global.css";
 import "@fontsource-variable/inter";
 import "@fontsource/istok-web";
+import Navbar from "@components/ui/navbar/Navbar.astro";
+
+// import Navbar from "@components/ui/navbar/Navbar.astro";
+// import Footer from "@components/ui/footer/Footer.astro";
+// import Line from "@components/ui/line/Line.astro";
+
+export interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  urlPath?: string;
+}
+
+// TODO: crear nueva imagen para metatags
+const {
+  title = "Florencia Luz Duarte | unicornio.dev",
+  description = "Un sitio web orientado a brindar acompañamiento y contenidos de valor a personas que están aprendiendo a programar.",
+  image = "/metatags-unicornio-links.png",
+  urlPath = "/",
+} = Astro.props;
+
+const urlFinal = `https://unicornio.dev${urlPath}`;
+
+const locale = Astro.currentLocale;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={locale}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>Unicornio Dev</title>
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <title>{title}</title>
+
+    <!-- Primary Meta Tags -->
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={urlFinal} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={urlFinal} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={image} />
+
+    <!-- View transitions -->
+    <ClientRouter />
   </head>
-  <body>
-    <h1 class="text-3xl font-bold underline text-purple">Hola</h1>
-    <slot />
+  <body class="bg-black text-gray-100 font-mono lg:text-[18px] min-h-screen">
+    <!-- TODO: Add new navbar component -->
+    <Navbar />
+    <div class="mx-6 xl:max-w-6xl xl:mx-auto">
+      <!-- TODO: add new line component -->
+      <!-- <Line /> -->
+    </div>
+    <main
+      class="flex flex-col gap-6 mt-14 min-h-screen lg:mt-24 mx-6 md:max-w-2xl md:mx-auto lg:max-w-3xl xl:max-w-4xl"
+    >
+      <slot />
+    </main>
+    <!-- TODO: add footer component -->
+    <!-- <Footer /> -->
   </body>
 </html>
