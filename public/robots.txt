@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://unicornio.dev/sitemap-index.xml
