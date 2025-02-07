@@ -13,6 +13,7 @@
     "@fontsource/istok-web": "^5.1.1",
     "@tailwindcss/vite": "^4.0.3",
     "astro": "^5.2.5",
+    "astro-icon": "^1.1.5",
     "tailwindcss": "^4.0.3"
   }
 }
