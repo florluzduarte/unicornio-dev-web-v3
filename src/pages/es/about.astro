@@ -1,7 +1,54 @@
 ---
+import type { Lang } from "@i18n/dictionary";
+import { useTranslations } from "@i18n/utils/i18n-utils";
+import { Image } from "astro:assets";
 import Layout from "@layouts/Layout.astro";
+import Heading1 from "@components/ui/text-components/Heading1.astro";
+import Heading2 from "@components/ui/text-components/Heading2.astro";
+import ParagraphGenerator from "@components/ui/text-components/ParagraphGenerator.astro";
+import {
+  spanishAboutMeIntro,
+  englishAboutMeIntro,
+  spanishCareerChange,
+  englishCareerChange,
+  spanishSelfTaught,
+  englishSelfTaught,
+  spanishGoals,
+  englishGoals,
+  spanishHobbies,
+  englishHobbies,
+} from "@data/aboutMeData";
+
+import florPic from "@assets/about/about-profile-picture.jpg";
+import cats from "@assets/about/about-cats.jpg";
+
+const lang = Astro.currentLocale as Lang;
+const t = useTranslations(lang);
 ---
 
 <Layout>
-  <h1>About spanish</h1>
+  <Heading1>{t("about.title")}</Heading1>
+  <Image src={florPic} alt="Florencia Luz Duarte" />
+  <ParagraphGenerator
+    englishTexts={englishAboutMeIntro}
+    spanishTexts={spanishAboutMeIntro}
+  />
+  <Heading2 color="text-white">{t("about.career.change")}</Heading2>
+  <ParagraphGenerator
+    englishTexts={englishCareerChange}
+    spanishTexts={spanishCareerChange}
+  />
+  <Heading2 color="text-white">{t("about.self.taught")}</Heading2>
+  <ParagraphGenerator
+    englishTexts={englishSelfTaught}
+    spanishTexts={spanishSelfTaught}
+  />
+  <Heading2 color="text-white">{t("about.goals")}</Heading2>
+  <ParagraphGenerator englishTexts={englishGoals} spanishTexts={spanishGoals} />
+  <Heading2 color="text-white">{t("about.hobbies")}</Heading2>
+  <Image src={cats} alt="" />
+  <ParagraphGenerator
+    englishTexts={englishHobbies}
+    spanishTexts={spanishHobbies}
+  />
 </Layout>

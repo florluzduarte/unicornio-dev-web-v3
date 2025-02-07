@@ -1,0 +1,24 @@
+---
+import type { Lang } from "@i18n/dictionary";
+import { useTranslations } from "@i18n/utils/i18n-utils";
+import Layout from "@layouts/Layout.astro";
+import { englishTechTalks, spanishTechTalks } from "@data/techTalksData";
+import Heading1 from "@components/ui/text-components/Heading1.astro";
+import TalksCard from "@components/talks/talks-card/TalksCard.astro";
+import Line from "@components/ui/line/Line.astro";
+
+const lang = Astro.currentLocale as Lang;
+const t = useTranslations(lang);
+---
+
+<Layout>
+  <Heading1 color="text-white">{t("talks.title")}</Heading1>
+  <Line />
+  <div class="grid grid-cols-1 gap-14 mb-14">
+    {
+      lang == "es"
+        ? spanishTechTalks.map((talk) => <TalksCard {talk} />)
+        : englishTechTalks.map((talk) => <TalksCard {talk} />)
+    }
+  </div>
+</Layout>

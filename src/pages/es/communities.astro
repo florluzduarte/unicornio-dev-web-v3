@@ -1,0 +1,28 @@
+---
+import type { Lang } from "@i18n/dictionary";
+import { useTranslations } from "@i18n/utils/i18n-utils";
+import Heading1 from "@components/ui/text-components/Heading1.astro";
+import Layout from "@layouts/Layout.astro";
+import CommunityDetails from "@components/communities/CommunityDetails.astro";
+import { spanishCommunities, englishCommunities } from "@data/communitiesData";
+import CommunityIntro from "@components/communities/CommunityIntro.astro";
+
+const lang = Astro.currentLocale as Lang;
+const t = useTranslations(lang);
+---
+
+<Layout>
+  <Heading1>{t("communities.title")}</Heading1>
+  <CommunityIntro />
+  <div class="grid grid-cols-1 gap-14 mb-14">
+    {
+      lang == "es"
+        ? spanishCommunities.map((community) => (
+            <CommunityDetails {community} />
+          ))
+        : englishCommunities.map((community) => (
+            <CommunityDetails {community} />
+          ))
+    }
+  </div>
+</Layout>
