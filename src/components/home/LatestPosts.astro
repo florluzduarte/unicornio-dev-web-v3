@@ -1,36 +1,25 @@
 ---
 import { getCollection } from "astro:content";
-import type { Lang } from "@translate/dictionary";
-import type {
-  BlogPostData,
-  BlogPosts,
-} from "@type/content-collections/blog-collection-types";
-import { useTranslations } from "@translate/utils/i18n-utils";
+import type { Lang } from "@i18n/dictionary";
+import type { BlogPostData, BlogPosts } from "@type/content-collections";
+import { useTranslations } from "@i18n/utils/i18n-utils";
 import BlogArticle from "@components/blog/BlogArticle.astro";
 import Heading2 from "@components/ui/text-components/Heading2.astro";
 
-const allPostsSpanish: BlogPosts[] = await getCollection(
-  "blog",
-  ({ data }: { data: BlogPostData }) => {
-    return data.language === "es";
-  },
-);
+const allPostsSpanish: BlogPosts[] = await getCollection("blogEs");
 
 const spanishPostsSortedByDate = allPostsSpanish.sort(
   (postA, postB) =>
-    Date.parse(postB.data.publishDate) - Date.parse(postA.data.publishDate),
+    Date.parse(postB.data.publishDate.toISOString()) -
+    Date.parse(postA.data.publishDate.toISOString())
 );
 
-const allPostsEnglish: BlogPosts[] = await getCollection(
-  "blog",
-  ({ data }: { data: BlogPostData; slug: string }) => {
-    return data.language === "en";
-  },
-);
+const allPostsEnglish: BlogPosts[] = await getCollection("blogEn");
 
 const englishPostsSortedByDate = allPostsEnglish.sort(
   (postA, postB) =>
-    Date.parse(postB.data.publishDate) - Date.parse(postA.data.publishDate),
+    Date.parse(postB.data.publishDate.toISOString()) -
+    Date.parse(postA.data.publishDate.toISOString())
 );
 
 const lang = Astro.currentLocale as Lang;
@@ -44,33 +33,23 @@ const t = useTranslations(lang);
     lang === "es"
       ? spanishPostsSortedByDate
           .slice(0, 3)
-          .map(
-            (
-              { data, slug }: { data: BlogPostData; slug: string },
-              index: number,
-            ) => (
-              <BlogArticle
-                data={data}
-                slug={slug}
-                index={index}
-                lang={lang as Lang}
-              />
-            ),
-          )
+          .map((post, index) => (
+            <BlogArticle
+              data={post.data}
+              slug={post.id}
+              index={index}
+              lang={lang as Lang}
+            />
+          ))
       : englishPostsSortedByDate
           .slice(0, 3)
-          .map(
-            (
-              { data, slug }: { data: BlogPostData; slug: string },
-              index: number,
-            ) => (
-              <BlogArticle
-                data={data}
-                slug={slug}
-                index={index}
-                lang={lang as Lang}
-              />
-            ),
-          )
+          .map((post, index) => (
+            <BlogArticle
+              data={post.data}
+              slug={post.id}
+              index={index}
+              lang={lang as Lang}
+            />
+          ))
   }
 </section>
