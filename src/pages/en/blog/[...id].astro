@@ -1,0 +1,64 @@
+---
+import { getCollection, render } from "astro:content";
+
+import Layout from "@layouts/Layout.astro";
+import InternalLink from "@components/ui/links/InternalLink.astro";
+import type { Lang } from "@i18n/dictionary";
+import { useTranslatedPath, useTranslations } from "@i18n/utils/i18n-utils";
+import Heading1 from "@components/ui/text-components/Heading1.astro";
+import TagsBadge from "@components/ui/badges/TagsBadge.astro";
+import Line from "@components/ui/line/Line.astro";
+import { formatDateByLang } from "@utils/formatDateByLang";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blogEn");
+  return posts.map((post) => ({
+    params: { id: post.id },
+    props: { post },
+  }));
+}
+
+const lang = Astro.currentLocale as Lang;
+const t = useTranslations(lang);
+const translatedPath = useTranslatedPath(lang);
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const date = formatDateByLang(post, lang);
+---
+
+<Layout>
+  <article>
+    <div class="flex flex-col gap-4 mb-14">
+      <InternalLink path={translatedPath("/blog", lang)} color="text-orange"
+        >{t("blog.back.link")}</InternalLink
+      >
+
+      <!-- Title -->
+      <Heading1>
+        {post.data.title}
+      </Heading1>
+
+      <!-- Publish Date -->
+      <p class="font-sans text-sm font-bold text-gray-100 mb-4">
+        {t("blog.publish") + date}
+      </p>
+
+      <!-- Tags -->
+      <ul class="flex flex-wrap gap-3">
+        {
+          post.data.tags.map((tag: string) => (
+            <TagsBadge tag={tag} lang={lang} />
+          ))
+        }
+      </ul>
+    </div>
+    <Line />
+    <div class="flex flex-col gap-8 lg:gap-10 my-14">
+      <Content />
+      <InternalLink path={translatedPath("/blog", lang)} color="text-orange"
+        >{t("blog.back.link")}</InternalLink
+      >
+    </div>
+  </article>
+</Layout>

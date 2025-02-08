@@ -1,0 +1,40 @@
+---
+import type { BlogPosts } from "@type/content-collections";
+
+import type { Lang } from "@i18n/dictionary";
+import { getCollection } from "astro:content";
+import { useTranslations } from "@i18n/utils/i18n-utils";
+
+import Layout from "@layouts/Layout.astro";
+import Heading1 from "@components/ui/text-components/Heading1.astro";
+import Line from "@components/ui/line/Line.astro";
+import BlogArticle from "@components/blog/BlogArticle.astro";
+
+const englishBlogPosts: BlogPosts[] = await getCollection("blogEn");
+
+const postsSortedByDate = englishBlogPosts.sort(
+  (postA, postB) =>
+    Date.parse(postB.data.publishDate.toISOString()) -
+    Date.parse(postA.data.publishDate.toISOString())
+);
+
+const lang = Astro.currentLocale as Lang;
+const t = useTranslations(lang as Lang);
+---
+
+<Layout>
+  <Heading1 color="text-white">{t("blog.title")}</Heading1>
+  <div class="mb-14">
+    <Line />
+    {
+      postsSortedByDate.map((post, index) => (
+        <BlogArticle
+          data={post.data}
+          slug={post.id}
+          index={index}
+          lang={lang as Lang}
+        />
+      ))
+    }
+  </div>
+</Layout>

@@ -1,4 +1,4 @@
-import type { GetStaticPathsItem, GetStaticPathsResult } from "astro";
+import type { GetStaticPathsItem } from "astro";
 import type { CollectionEntry } from "astro:content";
 
 export interface BlogFromSlug {
@@ -12,10 +12,10 @@ export interface BlogFromSlug {
 }
 
 export interface BlogProps {
-  entry: CollectionEntry<"blog">;
+  entry: CollectionEntry<"blogEs"> | CollectionEntry<"blogEn">;
 }
 
-export type BlogPosts = CollectionEntry<"blogEs">;
+export type BlogPosts = CollectionEntry<"blogEs"> | CollectionEntry<"blogEn">;
 
 export interface BlogPostData {
   isDraft: boolean;
