@@ -12,7 +12,7 @@ export default defineConfig({
 
   i18n: {
       locales: ["es", "en"],
-      defaultLocale: "en"
+      defaultLocale: "es",
   },
 
   integrations: [icon()]

@@ -5,7 +5,7 @@ export const languages = {
 
 export type Lang = "es" | "en";
 
-export const defaultLang = "en";
+export const defaultLang = "es";
 
 export const showDefaultLang = false;
 
