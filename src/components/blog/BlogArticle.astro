@@ -1,10 +1,11 @@
 ---
-import type { BlogPostData } from "@type/content-collections/blog-collection-types";
-import type { Lang } from "@translate/dictionary";
+import type { BlogPostData } from "@type/content-collections";
+import type { Lang } from "@i18n/dictionary";
 import { textColors } from "@data/styles/colors";
 import TagsBadge from "@components/ui/badges/TagsBadge.astro";
 import Line from "@components/ui/line/Line.astro";
 import BlogPostLink from "@components/ui/links/BlogPostLink.astro";
+import { useTranslatedPath } from "@i18n/utils/i18n-utils";
 
 interface Props {
   slug: string;
@@ -14,12 +15,13 @@ interface Props {
 }
 
 const { slug, data, index, lang } = Astro.props;
+const translatePath = useTranslatedPath(lang);
 ---
 
 <div class="flex flex-col gap-8 my-10">
   <article class="flex flex-col gap-4">
     <BlogPostLink
-      path={`/${lang}/blog/${slug.split("/")[1]}`}
+      path={translatePath(`/blog/${slug}`, lang)}
       color={textColors[index]}>{data.title}</BlogPostLink
     >
     <p>{data.description}</p>

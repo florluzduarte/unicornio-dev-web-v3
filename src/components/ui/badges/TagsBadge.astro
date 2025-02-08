@@ -1,6 +1,6 @@
 ---
-import type { Lang } from "@translate/dictionary";
-import { useTranslations } from "@translate/utils/i18n-utils";
+import type { Lang } from "@i18n/dictionary";
+import { useTranslatedPath, useTranslations } from "@i18n/utils/i18n-utils";
 
 interface Props {
   tag: string;
@@ -9,11 +9,12 @@ interface Props {
 
 const { tag, lang } = Astro.props;
 const t = useTranslations(lang as Lang);
+const translatePath = useTranslatedPath(lang);
 ---
 
 <li class="bg-gray-700 py-2 px-4 rounded-full">
   <a
-    href={`/${lang}/tags/${tag}`}
+    href={translatePath(`/tags/${tag}`, lang)}
     class="font-sans font-bold text-gray-100 hover:text-white">{tag}</a
   >
 </li>

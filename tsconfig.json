@@ -4,6 +4,7 @@
   "exclude": ["dist"],
   "compilerOptions": {
     "baseUrl": ".",
+    "strictNullChecks": true,
     "allowJs": true,
     "paths": {
       "@components/*": ["src/components/*"],

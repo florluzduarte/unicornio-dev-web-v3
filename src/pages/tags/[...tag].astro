@@ -1,0 +1,62 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
+
+import type { Lang } from "@i18n/dictionary";
+import { useTranslations } from "@i18n/utils/i18n-utils";
+import type { BlogPosts, DynamicTags } from "@type/content-collections";
+
+import BlogArticle from "@components/blog/BlogArticle.astro";
+import Layout from "@layouts/Layout.astro";
+import Heading1 from "@components/ui/text-components/Heading1.astro";
+
+export const getStaticPaths = (async (): Promise<DynamicTags[]> => {
+  // Traer todos los posteos de la colección
+  const spanishBlogPosts = await getCollection("blogEs");
+
+  // Generar dinámicamente los tags según los posteos
+  const uniqueTags = [
+    ...new Set(
+      spanishBlogPosts.map((post: BlogPosts) => post.data.tags).flat()
+    ),
+  ];
+
+  // Retornar una ruta en español e inglés por cada tag del blog
+  return uniqueTags.flatMap((tag) => {
+    const filteredPosts = spanishBlogPosts.filter((post: BlogPosts) =>
+      post.data.tags.includes(tag)
+    );
+
+    const paths: DynamicTags[] = [
+      {
+        params: {
+          tag: tag as string,
+        },
+        props: { posts: filteredPosts },
+      },
+    ];
+    return paths;
+  });
+}) satisfies GetStaticPaths;
+
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+const lang = Astro.currentLocale as Lang;
+const t = useTranslations(lang as Lang);
+---
+
+<Layout>
+  <Heading1>{t("blog.tags.title")} {tag}</Heading1>
+  <ul>
+    {
+      posts.map((post, index) => (
+        <BlogArticle
+          data={post.data}
+          lang={post.data.language}
+          slug={post.id}
+          index={index}
+        />
+      ))
+    }
+  </ul>
+</Layout>

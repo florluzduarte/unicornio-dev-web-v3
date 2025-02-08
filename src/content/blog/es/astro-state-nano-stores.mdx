@@ -1,0 +1,31 @@
+---
+isDraft: false
+title: "Manejo de estado en Astro usando la librería Nano Stores"
+description: "Cómo podemos proveer de estado global a una app de Astro"
+publishDate: 2024-07-02
+canonicalUrl: "https://unicornio.dev/es/blog/astro-state-nano-stores"
+githubUrl: "https://github.com/florluzduarte"
+language: "es"
+tags: ["astro", "tutoriales"]
+---
+import VideoPlayer from "@components/ui/video-player/VideoPlayer.astro"
+
+
+✨ **Alguna vez te preguntaste... ¿Cómo compartir estado entre componentes de Astro?** ✨  
+
+Si estás acostumbrado a trabajar con React podés pensar que la solución es tener un Context provider que pueda ser consumido por otros componentes.  
+
+Pero en Astro, con su sistema de hidratación parcial y arquitectura de islas, no es posible usar este tipo de contextos envolventes. La misma gente de Astro nos recomienda el uso de la librería Nano Stores para solucionar este tema.
+
+Te preguntarás...  ¿Qué onda Nano Stores? ¿Para qué sirve esta librería? ¿Cuáles es su ventaja?
+
+Nano Stores es un manejador de estado minimalista que sirve para React, React Native, Preact, Vue, Svelte, Solid, Lit, Angular y Vanilla JS. 
+
+Su foco está en ser muuuuy pequeño y eficiente basándose en el uso de múltiples stores atómicos, y además, proveer una solución con enfoque agnóstico, listo para usar en tu framework preferido.  
+
+👩‍🚀 Nano Stores es mínimo, (menos de 1 KB) con cero dependencias.
+👩‍🚀 Al crear micro stores agnósticos, incluso podés compartir estado entre componentes de distintos frameworks.
+
+En el último vivo de Twitch estuvimos trabajando con esta librería y Vanilla JS para crear la funcionalidad de un navbar. Les dejo el link al video con más info sobre este tema
+
+<VideoPlayer id="wSxIwy6GvT4?si=7LYr1EYGJ6-1j6ne"/>

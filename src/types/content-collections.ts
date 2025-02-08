@@ -15,7 +15,7 @@ export interface BlogProps {
   entry: CollectionEntry<"blog">;
 }
 
-export type BlogPosts = CollectionEntry<"blog">;
+export type BlogPosts = CollectionEntry<"blogEs">;
 
 export interface BlogPostData {
   isDraft: boolean;
@@ -31,7 +31,6 @@ export interface BlogPostData {
 export interface DynamicTags extends GetStaticPathsItem {
   params: {
     tag: string;
-    lang: string;
   };
   props: {
     posts: BlogPosts[];

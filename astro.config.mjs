@@ -4,6 +4,8 @@ import tailwindcss from '@tailwindcss/vite';
 
 import icon from "astro-icon";
 
+import mdx from "@astrojs/mdx";
+
 // https://astro.build/config
 export default defineConfig({
   vite: {
@@ -15,5 +17,5 @@ export default defineConfig({
       defaultLocale: "es",
   },
 
-  integrations: [icon()]
+  integrations: [icon(), mdx()]
 });

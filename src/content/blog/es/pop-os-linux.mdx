@@ -1,0 +1,85 @@
+---
+isDraft: false
+title: "Mi primer Linux: Opiniones sobre PopOS!"
+description: "Mientras Windows explota por los aires, te cuento qué tal mi experiencia cambiándome a Linux"
+publishDate: 2024-07-19
+canonicalUrl: "https://unicornio.dev/es/blog/pop-os-linux"
+githubUrl: "https://github.com/florluzduarte"
+language: "es"
+tags: ["linux", "herramientas"]
+---
+import Heading2 from "@components/ui/text-components/Heading2.astro"
+import SimpleLink from "@components/ui/links/SimpleLink.astro"
+export const components = {
+  h2: Heading2,
+}
+
+Hoy me desperté, y como cualquier otro día, decidí entrar a <SimpleLink path="https://x.com/florluzduarte">X</SimpleLink> (aunque para mi se sigue llamando Twitter), y me llevé la sorpresa de que muchas computadoras con Windows estaban fallando masivamente en todo el mundo por problemas con una actualización del sistema 💀.  
+
+![Meme de Homero en la taberna con todos a su alrededor quejándose por el fallo de Windows y él sin problemas](src/assets/blog/pop-os/meme-windows-homero.webp)
+
+Mi primer pensamiento fue WTF está pasando, y el segundo, tengo que escribir sobre mi experiencia usando Linux jajaja.  
+
+Ustedes van a leer esto probablemente cuando el problema haya sido solucionado, y todo esto sea una pesadilla recurrente para los ingenieros de CrowdStrike (la compañía que habría generado el incidente en cuestión); pero mientras escribo este artículo, el panorama en redes parece post-apocalíptico. Bancos que no funcionan, hospitales sin sistema, vuelos cancelados, gente de IT trabajando a contrarreloj para volver a estar operativos... definitivamente hay caos en el ambiente.  
+
+Me parece una hermosa mañana para contarles, que **luego de muchísimos años aferrándome a Windows, un día le dí la oportunidad a PopOS! y estoy feliz de la vida con el cambio**.  
+
+## ¿Por qué me costaba irme de Windows?
+
+En parte porque soy un bicho de costumbre (como cada uno de ustedes), y vivo como el dicho **"mejor malo conocido que bueno por conocer"**. Por otra parte, porque toda mi carrera en Diseño la hice utilizando Windows, y cuando empecé a programar no lo pensé mucho, seguí con el mismo sistema operativo (SO).  
+
+Por un tiempo estuve justificada, ya que algunos programas que solía usar para modelar 3D y diseñar, solo están disponibles para esta plataforma, pero mientras iba dejando atrás <SimpleLink path="https://unicornio.dev/es/about/">mi pasado como Diseñadora Industrial</SimpleLink>, más me daba cuenta que ya no estaba atada a esos programas.  
+
+Aprovechando que necesitaba cambiar el disco sólido de mi computadora por uno con mayor capacidad (y un poco presionada por la comunidad de nerds hermosos a la que pertenezco), decidí cambiar el disco y empezar de cero con Linux.  
+
+## ¿Por qué PopOS?  
+
+Si investigaron alguna sobre Linux, sabrán que no hay una sola versión de este sistema operativo, sino que hay múltiples sabores de Linux en forma de distribuciones (o distros, como se suelen llamar).  
+
+Cada distribución tiene sus propias características y está orientada a un grupo específico de usuarios. Dentro de las más conocidas encontramos: Ubuntu, Debian, Linux Mint, Fedora, Arch Linux, Manjaro, entre muchas otras.   
+
+Como buena primeriza, pensaba que Ubuntu sería mi primer sabor de Linux, pero decidí hacer una búsqueda para ver cuáles otras distribuciones podían servirme según mis necesidades, que eran más o menos estas: 
+
+✨ Tener todas las herramientas que uso para programar  
+
+✨ Tener una linda UI que me ayudara a hacer el cambio desde Windows  
+
+✨ Contar con buen soporte y una comunidad que apoye el proyecto (esto es importante para la continuidad, mantenimiento y actualización de una distro)  
+
+✨ Ser apta para principiantes  
+
+Con esto en mente, salí a buscar opciones y terminé encontrando <SimpleLink path="https://pop.system76.com/">PopOS!</SimpleLink>
+
+Esta distribución está basada en Ubuntu, por lo cual es muy estable y tiene gran soporte; además de ser beginner friendly. 
+
+Es gestionada y fue creada por una empresa estadounidense que produce computadoras llamada <SimpleLink path="https://system76.com/">System76</SimpleLink>, por lo que le pusieron mucha atención a brindar una buena experiencia, que se ve y se siente moderna.  
+
+![Imagen de mi desktop en PopOS!](src/assets/blog/pop-os/pop-os-desktop.png)
+
+Tiene detalles geniales como el tile manager window, que permite el uso de una pantalla dividida para optimizar el escritorio de trabajo; y que me ha servido bastante para tener VSCode, la terminal y la documentación que necesito en pantalla, sin necesidad de tener múltiples monitores.  
+
+![PopOs! Tile window manager](src/assets/blog/pop-os/pop-os-tile-manager.png)
+
+Ofrece encriptación del disco sólido / duro, lo cual le agrega una capa de seguridad extra a los datos que manejamos en nuestra computadora.  
+
+Tiene un instalador de aplicaciones muy práctico si todavía te sentís un poco inseguro con la terminal y los comandos. Además cuenta con una sección específica de apps para desarrollo muy completa. Aunque recomiendo [aprender a manejarse con la terminal]() e instalar todo según las indicaciones que encuentran en las webs oficiales de cada herramienta, para garantizar que tenemos la última versión de cada cosa.   
+
+![PopOs! instalador de herramientas](src/assets/blog/pop-os/pop-os-dev-installer.png)
+
+Por último, fue muy simple de instalar. Descargan el SO directamente desde la web oficial y luego pueden instalarlo en sus computadoras desde un pendrive. Todo el proceso fue muy sencillo y bien guiado por el asistente de instalación que te explica todo paso a paso. 
+
+Si ya tenés ganas de darle una oportunidad, te dejo <SimpleLink path="https://itsfoss.com/install-pop-os/">la guía que me ayudó a hacer la instalación</SimpleLink> para que la tengas a mano.  
+
+## Primeros meses con PopOS!
+
+La verdad estoy totalmente sorprendida y a gusto con esta distro. No tengo quejas de ningún tipo, es estable y todo funciona super bien.  
+
+Al ser un SO tan orientado a usuarios principiantes, no he notado grandes diferencias de uso versus Windows. La estructura de carpetas funciona igual, todos los programas que necesito están disponibles, y no tuve que hacer ninguna configuración adicional luego de la instalación inicial.  
+
+Quizás lo único que extraño, es que todavía no hay soporte para Notion Calendar y me había encariñado bastante con ese calendario. Ni modo, toca esperar a que se pongan las pilas con eso.  
+
+Me llevó una tarde pasarme de Windows a Linux, y recomiendo fuertemente que al menos lo intenten en algún momento de sus estudios / trabajo como programadores. 
+
+Algo importante a destacar es que todo en mi compu funciona más rápido luego del cambio. Al prender la computadora enseguida está operativa, las actualizaciones del SO son super rápidas y no son forzadas y en ningún momento he sentido que un proceso se ralentiza por tener varias ventanas abiertas a la vez.  
+
+Al principio pensaba que iba a extrañar algunas cosas de Windows, pero rápidamente me dí cuenta que prefiero 100% quedarme en Linux.  
